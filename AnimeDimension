@@ -1,0 +1,78 @@
+getgenv().autoskill1 = true
+getgenv().autoskill2 = true
+getgenv().autoskill3 = true
+getgenv().autoskill4 = true
+getgenv().autopunch = true
+    while getgenv().autopunch == true do
+local A_1 = "UseSkill"
+local A_2 = 
+{
+	["hrpCFrame"] = CFrame.new(33.8363419, 17.1266422, 604.034912, 1, 0, -4.86159693e-21, 0, 1, 0, 4.86159693e-21, 0, 1), 
+	["attackNumber"] = 1
+}
+local A_3 = "BasicAttack"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.MainRemoteEvent
+Event:FireServer(A_1, A_2, A_3)
+    wait()
+    end
+    
+    while getgenv().autoskill1 == true do
+        local A_1 = "UseSkill"
+local A_2 = 
+{
+}	
+local A_3 = 1
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.MainRemoteEvent
+Event:FireServer(A_1, A_2, A_3)
+wait(5)
+ end
+end)
+    while getgenv().autoskill2 == true do
+        local A_1 = "UseSkill"
+        local A_2 = 
+        {
+        }
+        local A_3 = 2
+        local Event = game:GetService("ReplicatedStorage").RemoteEvents.MainRemoteEvent
+        Event:FireServer(A_1, A_2, A_3)
+         
+wait(5)
+ end
+end)
+    while getgenv().autoskill3 == true do
+        local A_1 = "UseSkill"
+        local A_2 = 
+        {
+        }
+        local A_3 = 3
+        local Event = game:GetService("ReplicatedStorage").RemoteEvents.MainRemoteEvent
+        Event:FireServer(A_1, A_2, A_3)
+        
+         
+wait(5)
+ end
+end)
+    while getgenv().autoskill4 == true do
+        local A_1 = "UseSkill"
+        local A_2 = 
+        {
+        }
+        local A_3 = 4
+        local Event = game:GetService("ReplicatedStorage").RemoteEvents.MainRemoteEvent
+        Event:FireServer(A_1, A_2, A_3)
+         
+         
+wait(5)
+ end
+end) 
+
+local weeb = game:GetService("Workspace").Folders.Monsters
+local uwu = true
+while uwu do
+wait()
+for _,v in ipairs(weeb:GetChildren()) do
+if v:FindFirstChild("HumanoidRootPart") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame + Vector3.new(-5,0,0)
+end
+end
+end
