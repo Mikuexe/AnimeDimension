@@ -1,62 +1,57 @@
-getgenv().autoskill1 = true
-getgenv().autoskill2 = true
-getgenv().autoskill3 = true
-getgenv().autoskill4 = true
-getgenv().autopunch = true
-    while getgenv().autoskill1 == true do
-        local A_1 = "UseSkill"
-local A_2 = 
-{
-}	
-local A_3 = 1
-local Event = game:GetService("ReplicatedStorage").RemoteEvents.MainRemoteEvent
-Event:FireServer(A_1, A_2, A_3)
- end
-    while getgenv().autoskill2 == true do
-        local A_1 = "UseSkill"
-        local A_2 = 
-        {
-        }
-        local A_3 = 2
-        local Event = game:GetService("ReplicatedStorage").RemoteEvents.MainRemoteEvent
-        Event:FireServer(A_1, A_2, A_3)
- end
-    while getgenv().autoskill3 == true do
-        local A_1 = "UseSkill"
-        local A_2 = 
-        {
-        }
-        local A_3 = 3
-        local Event = game:GetService("ReplicatedStorage").RemoteEvents.MainRemoteEvent
-        Event:FireServer(A_1, A_2, A_3)
- end
-    while getgenv().autoskill4 == true do
-        local A_1 = "UseSkill"
-        local A_2 = 
-        {
-        }
-        local A_3 = 4
-        local Event = game:GetService("ReplicatedStorage").RemoteEvents.MainRemoteEvent
-        Event:FireServer(A_1, A_2, A_3)
- end
- while getgenv().autopunch == true do
-    local A_1 = "UseSkill"
+getgenv().autojoin = false
+getgenv().autostart = false
+getgenv().restart = false
+function doJoin()
+spawn(function()
+    while getgenv().autojoin == true do
+        local A_1 = "CreateRoom"
     local A_2 = 
     {
-        ["hrpCFrame"] = CFrame.new(33.8363419, 17.1266422, 604.034912, 1, 0, -4.86159693e-21, 0, 1, 0, 4.86159693e-21, 0, 1), 
-        ["attackNumber"] = 1
+        ["Difficulty"] = "Easy", 
+        ["FriendsOnly"] = true, 
+        ["MapName"] = "Titan Dimension", 
+        ["Hardcore"] = true,
     }
-    local A_3 = "BasicAttack"
-    local Event = game:GetService("ReplicatedStorage").RemoteEvents.MainRemoteEvent
-    Event:FireServer(A_1, A_2, A_3)
-        end
-local weeb = game:GetService("Workspace").Folders.Monsters
-local uwu = true
-while uwu do
+    local Event = game:GetService("ReplicatedStorage").RemoteFunctions.MainRemoteFunction
+    Event:InvokeServer(A_1, A_2)
+    wait()
+    end
+end)
+end
+spawn(function()
+while getgenv().autojoin == true do
+    local A_1 = "TeleportPlayers"
+local Event = game:GetService("ReplicatedStorage").RemoteFunctions.MainRemoteFunction
+Event:InvokeServer(A_1)
 wait()
-for _,v in ipairs(weeb:GetChildren()) do
-if v:FindFirstChild("HumanoidRootPart") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame + Vector3.new(-5,0,0)
 end
+end)
+function autoRestart()
+while getgenv().restart == true do
+  local A_1 = "RetryDungeon"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.MainRemoteEvent
+Event:FireServer(A_1)
+end 
 end
-end
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
+
+local w = library:CreateWindow("CHAD") -- Creates the window
+
+local b = w:CreateFolder("Auto Restart") -- Creates the folder(U will put here your buttons,etc)
+
+local c = w:CreateFolder("Game Settings") -- Creates the folder(U will put here your buttons,etc)
+
+b:Toggle("Game Settings",function(bool)
+    getgenv().autojoin = bool
+    print('autojoin is: ',bool)
+    if bool then
+        doJoin()           
+      end
+end)
+b:Toggle("Auto Restart",function(bool)
+    getgenv().autojoin = bool
+    print('autojoin is: ',bool)
+    if bool then
+        autoRestart()        
+      end
+end)
